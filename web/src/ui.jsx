@@ -4,20 +4,38 @@ import { CheckIcon, CloudSlashIcon, CircleNotchIcon, WarningIcon, XIcon } from '
 export const cx = (...c) => c.filter(Boolean).join(' ')
 const nombreCampo = (l) => (typeof l === 'string' ? l.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') : undefined)
 
+// Marca de la empresa (fabrica con chimenea), tomada de public/logo-kintana.svg.
+export function MarcaKintana({ className = '' }) {
+  const id = 'k' + useId().replace(/[^a-zA-Z0-9]/g, '')
+  return (
+    <svg viewBox="58 28 520 352" className={className} aria-hidden focusable="false">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+          {[['0', '#8b5ca0'], ['0.14', '#8b5ca0'], ['0.141', '#765898'], ['0.28', '#765898'], ['0.281', '#8d5b9e'], ['0.42', '#8d5b9e'], ['0.421', '#695a96'], ['0.57', '#695a96'], ['0.571', '#8d5b9e'], ['0.71', '#8d5b9e'], ['0.711', '#625894'], ['0.85', '#625894'], ['0.851', '#8b5ca0'], ['1', '#8b5ca0']]
+            .map(([o, c]) => <stop key={o} offset={o} stopColor={c} />)}
+        </linearGradient>
+      </defs>
+      <path d="M162 142C188 92 235 88 295 82C340 77 372 60 402 36C396 76 368 102 312 108C252 114 205 116 162 142Z" fill="#5a4946" stroke="#3e312f" strokeWidth="3" strokeLinejoin="round" />
+      <path fillRule="evenodd" fill={`url(#${id})`} stroke="#52437a" strokeWidth="3.5" d="M68 350L104 350L116 155L172 155L164 350L216 350L234 226L348 152L345 186L458 112L455 148L562 76L542 350L572 350L572 372L68 372ZM258 350L270 250L322 215L310 350ZM366 350L378 210L432 174L420 350ZM474 350L486 170L534 136L522 350Z" />
+    </svg>
+  )
+}
+
 export function Logo({ className = '', sub = true }) {
   return (
-    <span className={cx('inline-flex flex-col leading-none select-none', className)} translate="no">
-      <span className="font-semibold tracking-tight text-zinc-900">
-        <span className="text-cobre-600 tracking-[-0.12em] mr-1.5">////</span>KINTANA
+    <span className={cx('inline-flex select-none items-center gap-2.5 leading-none', className)} translate="no">
+      <MarcaKintana className="h-[1.9em] w-auto shrink-0" />
+      <span className="flex flex-col">
+        <span className="font-black italic tracking-[0.04em] text-marca-700">KINTANA</span>
+        {sub && <span className="mt-1 text-[10px] font-semibold tracking-[0.02em] text-zinc-600">Electro-Automatización Industrial S.A.S</span>}
       </span>
-      {sub && <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500">Electricidad industrial</span>}
     </span>
   )
 }
 
 const VARIANTES = {
   primario: 'bg-zinc-900 text-white hover:bg-zinc-800 disabled:bg-zinc-400',
-  cobre: 'bg-cobre-600 text-white hover:bg-cobre-700 disabled:bg-cobre-100 disabled:text-cobre-600',
+  marca: 'bg-marca-600 text-white hover:bg-marca-700 disabled:bg-marca-100 disabled:text-marca-600',
   secundario: 'bg-white text-zinc-900 ring-1 ring-inset ring-zinc-300 hover:bg-zinc-50 hover:ring-zinc-400 disabled:text-zinc-400',
   fantasma: 'text-zinc-700 hover:bg-zinc-200/70 hover:text-zinc-900 disabled:text-zinc-400',
   peligro: 'bg-white text-mal ring-1 ring-inset ring-mal/30 hover:bg-mal-bg',
@@ -52,7 +70,7 @@ export function Enlace({ href, children, className = '', variante = 'secundario'
 }
 
 const inputBase =
-  'w-full rounded-[10px] bg-white px-3.5 text-base text-zinc-900 ring-1 ring-inset ring-zinc-300 placeholder:text-zinc-400 transition-[box-shadow] duration-150 hover:ring-zinc-400 focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-cobre-500 aria-[invalid=true]:ring-mal'
+  'w-full rounded-[10px] bg-white px-3.5 text-base text-zinc-900 ring-1 ring-inset ring-zinc-300 placeholder:text-zinc-400 transition-[box-shadow] duration-150 hover:ring-zinc-400 focus:outline-none focus-visible:outline-none focus:ring-2 focus:ring-marca-500 aria-[invalid=true]:ring-mal'
 
 export function Campo({ label, ayuda, error, children, className = '', unidad }) {
   const id = useId()
@@ -175,7 +193,7 @@ export function Chips({ label, opciones, valores = [], onChange, className = '' 
               onClick={() => toggle(o.v)}
               className={cx(
                 'inline-flex h-11 items-center gap-1.5 rounded-[10px] px-3.5 text-[15px] font-medium ring-1 ring-inset transition-[background-color,color,box-shadow,transform] duration-150 active:scale-[0.97]',
-                activo ? 'bg-cobre-50 text-cobre-700 ring-cobre-500' : 'bg-white text-zinc-700 ring-zinc-300 hover:ring-zinc-400',
+                activo ? 'bg-marca-50 text-marca-700 ring-marca-500' : 'bg-white text-zinc-700 ring-zinc-300 hover:ring-zinc-400',
               )}
             >
               {activo && <CheckIcon className="size-4" weight="bold" aria-hidden />}
@@ -193,7 +211,7 @@ const NIVEL = {
   alerta: 'bg-alerta-bg text-alerta',
   mal: 'bg-mal-bg text-mal',
   neutro: 'bg-zinc-200/70 text-zinc-700',
-  cobre: 'bg-cobre-50 text-cobre-700',
+  marca: 'bg-marca-50 text-marca-700',
 }
 export function Etiqueta({ nivel = 'neutro', children, className = '' }) {
   return (

@@ -120,7 +120,7 @@ export default function Cotizacion({ orden, onMoverOrden }) {
     if (tel.length === 10 && tel.startsWith('3')) tel = `57${tel}`
     const lineas = cot.items.map((it) => `• ${it.descripcion}: ${fmtCOP((Number(it.cantidad) || 0) * (Number(it.valor) || 0))}`)
     const texto = [
-      `Buen día${c.contacto ? ` ${c.contacto}` : ''}. Le compartimos la cotización N° ${cot.numero} de Kintana Electricidad Industrial.`,
+      `Buen día${c.contacto ? ` ${c.contacto}` : ''}. Le compartimos la cotización N° ${cot.numero} de Kintana Electro-Automatización Industrial S.A.S.`,
       `Equipo: ${[m.marca, m.hp && `${m.hp} HP`, m.rpm && `${m.rpm} rpm`].filter(Boolean).join(' ')} (OT ${orden.numero})`,
       '',
       ...lineas,
@@ -142,7 +142,7 @@ export default function Cotizacion({ orden, onMoverOrden }) {
         <ErrorCaja error={error} />
         <Vacio icono={LightningIcon} titulo="Esta orden aún no tiene cotización" texto={n ? `El diagnóstico marcó ${n} trabajo${n === 1 ? '' : 's'}. La cotización se arma sola con la lista de precios; luego puedes ajustar cantidades y valores.` : 'El técnico no ha marcado trabajos en el diagnóstico. Puedes crear una cotización en blanco.'}>
           <div className="flex flex-wrap gap-2">
-            {n > 0 && <Boton variante="cobre" icono={LightningIcon} cargando={guardando} onClick={() => crear(true)}>Generar desde el diagnóstico</Boton>}
+            {n > 0 && <Boton variante="marca" icono={LightningIcon} cargando={guardando} onClick={() => crear(true)}>Generar desde el diagnóstico</Boton>}
             <Boton variante="secundario" icono={PlusIcon} disabled={guardando} onClick={() => crear(false)}>Cotización en blanco</Boton>
           </div>
         </Vacio>
@@ -179,16 +179,16 @@ export default function Cotizacion({ orden, onMoverOrden }) {
               {cot.items.map((it, i) => (
                 <tr key={it.id}>
                   <td className="px-2 py-1.5">
-                    <input aria-label={`Descripción línea ${i + 1}`} value={it.descripcion} onChange={(e) => cambiarItem(it.id, { descripcion: e.target.value })} list="precios-lista" autoComplete="off" className="h-10 w-full rounded-[8px] px-2 hover:bg-zinc-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-cobre-500" />
+                    <input aria-label={`Descripción línea ${i + 1}`} value={it.descripcion} onChange={(e) => cambiarItem(it.id, { descripcion: e.target.value })} list="precios-lista" autoComplete="off" className="h-10 w-full rounded-[8px] px-2 hover:bg-zinc-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-marca-500" />
                   </td>
                   <td className="px-1 py-1.5">
-                    <input aria-label={`Cantidad línea ${i + 1}`} inputMode="decimal" value={it.cantidad} onChange={(e) => cambiarItem(it.id, { cantidad: e.target.value.replace(',', '.') })} className="num h-10 w-full rounded-[8px] px-2 text-right hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-cobre-500" />
+                    <input aria-label={`Cantidad línea ${i + 1}`} inputMode="decimal" value={it.cantidad} onChange={(e) => cambiarItem(it.id, { cantidad: e.target.value.replace(',', '.') })} className="num h-10 w-full rounded-[8px] px-2 text-right hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-marca-500" />
                   </td>
                   <td className="px-1 py-1.5">
-                    <input aria-label={`Unidad línea ${i + 1}`} value={it.unidad} onChange={(e) => cambiarItem(it.id, { unidad: e.target.value })} className="h-10 w-full rounded-[8px] px-2 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-cobre-500" />
+                    <input aria-label={`Unidad línea ${i + 1}`} value={it.unidad} onChange={(e) => cambiarItem(it.id, { unidad: e.target.value })} className="h-10 w-full rounded-[8px] px-2 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-marca-500" />
                   </td>
                   <td className="px-1 py-1.5">
-                    <input aria-label={`Valor unitario línea ${i + 1}`} inputMode="numeric" value={it.valor} onChange={(e) => cambiarItem(it.id, { valor: e.target.value.replace(/\D/g, '') })} className="num h-10 w-full rounded-[8px] px-2 text-right hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-cobre-500" />
+                    <input aria-label={`Valor unitario línea ${i + 1}`} inputMode="numeric" value={it.valor} onChange={(e) => cambiarItem(it.id, { valor: e.target.value.replace(/\D/g, '') })} className="num h-10 w-full rounded-[8px] px-2 text-right hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-marca-500" />
                   </td>
                   <td className="num px-3 py-1.5 text-right font-medium">{fmtCOP((Number(it.cantidad) || 0) * (Number(it.valor) || 0))}</td>
                   <td className="px-1 py-1.5">
@@ -233,7 +233,7 @@ export default function Cotizacion({ orden, onMoverOrden }) {
         <Enlace href={`#/orden/${orden.id}/informe?tipo=cotizacion`} icono={PrinterIcon}>PDF</Enlace>
         <Boton variante="secundario" icono={WhatsappLogoIcon} onClick={whatsapp} disabled={sucio} title={sucio ? 'Guarda antes de enviar' : undefined}>WhatsApp</Boton>
         {cot.estado === 'aprobada' && ['cotizacion', 'aprobacion'].includes(orden.estado) && (
-          <Boton variante="cobre" icono={ArrowRightIcon} disabled={sucio} onClick={() => onMoverOrden('reparacion')}>Pasar a reparación</Boton>
+          <Boton variante="marca" icono={ArrowRightIcon} disabled={sucio} onClick={() => onMoverOrden('reparacion')}>Pasar a reparación</Boton>
         )}
       </div>
     </div>

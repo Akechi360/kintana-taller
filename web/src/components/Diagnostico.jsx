@@ -99,12 +99,12 @@ export default function Diagnostico({ orden, onGuardado }) {
 
       <Seccion titulo="Trabajos requeridos" descripcion="Con esto administración arma la cotización automáticamente.">
         {sugeridos.length > 0 && (
-          <div className="flex flex-col gap-3 rounded-[12px] bg-cobre-50 px-4 py-3.5 ring-1 ring-cobre-100">
-            <p className="flex items-start gap-2 text-[15px] text-cobre-700">
+          <div className="flex flex-col gap-3 rounded-[12px] bg-marca-50 px-4 py-3.5 ring-1 ring-marca-100">
+            <p className="flex items-start gap-2 text-[15px] text-marca-700">
               <LightbulbIcon className="mt-0.5 size-5 shrink-0" weight="fill" aria-hidden />
               <span>Según lo marcado, el motor podría necesitar: <strong>{sugeridos.map(nombre).join(', ')}</strong>.</span>
             </p>
-            <Boton variante="cobre" tam="sm" icono={PlusIcon} className="self-start" onClick={() => set({ trabajos: [...(d.trabajos || []), ...sugeridos] })}>
+            <Boton variante="marca" tam="sm" icono={PlusIcon} className="self-start" onClick={() => set({ trabajos: [...(d.trabajos || []), ...sugeridos] })}>
               Agregar sugeridos
             </Boton>
           </div>

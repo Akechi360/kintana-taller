@@ -5,6 +5,10 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 const PB = 'http://127.0.0.1:8090'
 
+// En Vercel, sin VITE_PB_URL definida, la app usa el servidor de demo en Render.
+// ponytail: URL fija de la demo; al instalar el PC de la oficina, definir VITE_PB_URL en Vercel.
+if (process.env.VERCEL && !process.env.VITE_PB_URL) process.env.VITE_PB_URL = 'https://kintana-taller.onrender.com'
+
 export default defineConfig({
   plugins: [
     react(),

@@ -58,7 +58,7 @@ export default function MisOrdenes() {
               Exportar a Excel
             </Boton>
           )}
-          <Enlace href="#/nueva" variante="cobre" icono={PlusIcon} className="max-sm:hidden">
+          <Enlace href="#/nueva" variante="marca" icono={PlusIcon} className="max-sm:hidden">
             Nueva recepción
           </Enlace>
         </div>
@@ -74,7 +74,7 @@ export default function MisOrdenes() {
             onChange={(e) => setFiltro('q', e.target.value)}
             placeholder="OT, cliente, marca, serial…"
             autoComplete="off"
-            className="h-12 w-full rounded-[10px] bg-white pl-11 pr-3 text-base ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:outline-none focus:ring-2 focus:ring-cobre-500"
+            className="h-12 w-full rounded-[10px] bg-white pl-11 pr-3 text-base ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:outline-none focus:ring-2 focus:ring-marca-500"
           />
         </label>
         <label>
@@ -82,7 +82,7 @@ export default function MisOrdenes() {
           <select
             value={estado}
             onChange={(e) => setFiltro('estado', e.target.value)}
-            className="h-12 w-full rounded-[10px] bg-white px-3 text-base ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:outline-none focus:ring-2 focus:ring-cobre-500"
+            className="h-12 w-full rounded-[10px] bg-white px-3 text-base ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:outline-none focus:ring-2 focus:ring-marca-500"
           >
             <option value="">Todas las etapas</option>
             {ESTADOS.map((e) => <option key={e} value={e}>{ETAPA[e].nombre}</option>)}
@@ -95,7 +95,7 @@ export default function MisOrdenes() {
 
       {data && data.length === 0 && (
         <Vacio icono={ClipboardTextIcon} titulo="Todavía no hay órdenes" texto="Cuando llegue un motor, regístralo con sus fotos y datos de placa. La orden aparecerá aquí con su consecutivo.">
-          <Enlace href="#/nueva" variante="cobre" icono={PlusIcon}>Registrar primer motor</Enlace>
+          <Enlace href="#/nueva" variante="marca" icono={PlusIcon}>Registrar primer motor</Enlace>
         </Vacio>
       )}
       {data && data.length > 0 && filtradas.length === 0 && (

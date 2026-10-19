@@ -56,7 +56,7 @@ export default function Precios() {
             La cotización automática toma estos valores según los trabajos que marca el técnico. Para rodamientos usa la clave <span mono>rod_6312</span>; si la unidad es HP o kg, la cantidad se toma de la placa o del peso de alambre.
           </p>
         </div>
-        <Boton variante="cobre" icono={PlusIcon} onClick={() => { setErr(''); setEditar({ ...vacio }) }}>Nuevo precio</Boton>
+        <Boton variante="marca" icono={PlusIcon} onClick={() => { setErr(''); setEditar({ ...vacio }) }}>Nuevo precio</Boton>
       </div>
       <ErrorCaja error={error && mensajeError(error)} onReintentar={() => recargar()} />
       {cargando && !data && <Cargando />}

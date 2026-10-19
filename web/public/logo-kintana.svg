@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" width="100%" height="100%">
+  <defs>
+    <!-- Degradado de franjas horizontales estilo industrial del logo original -->
+    <linearGradient id="kintanaBands" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b5ca0" />
+      <stop offset="14%" stop-color="#8b5ca0" />
+      <stop offset="14.1%" stop-color="#765898" />
+      <stop offset="28%" stop-color="#765898" />
+      <stop offset="28.1%" stop-color="#8d5b9e" />
+      <stop offset="42%" stop-color="#8d5b9e" />
+      <stop offset="42.1%" stop-color="#695a96" />
+      <stop offset="57%" stop-color="#695a96" />
+      <stop offset="57.1%" stop-color="#8d5b9e" />
+      <stop offset="71%" stop-color="#8d5b9e" />
+      <stop offset="71.1%" stop-color="#625894" />
+      <stop offset="85%" stop-color="#625894" />
+      <stop offset="85.1%" stop-color="#8b5ca0" />
+      <stop offset="100%" stop-color="#8b5ca0" />
+    </linearGradient>
+
+    <!-- Sombra suave opcional para darle nitidez -->
+    <filter id="crisp" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.5" flood-color="#2d1e3e" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- 1. HUMO DE LA CHIMENEA (Gris/Marrón oscuro ondulado) -->
+  <path d="M 162 142 
+       C 188 92, 235 88, 295 82 
+       C 340 77, 372 60, 402 36 
+       C 396 76, 368 102, 312 108 
+       C 252 114, 205 116, 162 142 Z" fill="#5a4946" stroke="#3e312f" stroke-width="3" stroke-linejoin="round" />
+
+  <!-- 2. SILUETA DE LA FÁBRICA (Chimenea + 3 techos dentados + Base + 3 Ventanas huecas) -->
+  <!-- Usamos fill-rule="evenodd" para que las 3 ventanas internas sean transparentes -->
+  <path fill-rule="evenodd" fill="url(#kintanaBands)" stroke="#52437a" stroke-width="3.5" stroke-linejoin="miter" filter="url(#crisp)" d="
+      M 68 350
+      L 104 350
+      L 116 155
+      L 172 155
+      L 164 350
+      L 216 350
+      L 234 226
+      L 348 152
+      L 345 186
+      L 458 112
+      L 455 148
+      L 562 76
+      L 542 350
+      L 572 350
+      L 572 372
+      L 68 372
+      Z
+
+      M 258 350
+      L 270 250
+      L 322 215
+      L 310 350
+      Z
+
+      M 366 350
+      L 378 210
+      L 432 174
+      L 420 350
+      Z
+
+      M 474 350
+      L 486 170
+      L 534 136
+      L 522 350
+      Z
+    " />
+
+  <!-- 3. TEXTO PRINCIPAL: KINTANA (Tipografía ancha inclinada con borde) -->
+  <text x="315" y="445" text-anchor="middle" font-family="&#39;Arial Black&#39;, &#39;Impact&#39;, &#39;Montserrat&#39;, sans-serif" font-size="74" font-weight="900" font-style="italic" letter-spacing="4" fill="#8b5ca0" stroke="#4e3d73" stroke-width="3" transform="scale(1.12, 1) translate(-34, 0)">
+    KINTANA
+  </text>
+
+  <!-- 4. SUBTÍTULO: Electro- Automatización Industrial S.A.S -->
+  <text x="320" y="492" text-anchor="middle" font-family="&#39;Arial&#39;, &#39;Helvetica Neue&#39;, sans-serif" font-size="27" font-weight="700" letter-spacing="0.5" fill="#3b3654">
+    Electro- Automatización Industrial S.A.S
+  </text>
+</svg>

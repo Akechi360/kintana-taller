@@ -66,7 +66,7 @@ export function FotosLocales({ fotos, onCambiar, onQuitar }) {
             id={`nota-${f.id}`}
             value={f.nota}
             onChange={(e) => onCambiar(f.id, e.target.value)}
-            className="h-11 w-full rounded-[10px] bg-white px-2.5 text-[15px] ring-1 ring-inset ring-zinc-300 focus:outline-none focus:ring-2 focus:ring-cobre-500"
+            className="h-11 w-full rounded-[10px] bg-white px-2.5 text-[15px] ring-1 ring-inset ring-zinc-300 focus:outline-none focus:ring-2 focus:ring-marca-500"
           >
             <option value="">Etiqueta…</option>
             {TIPOS_FOTO.map((t) => <option key={t}>{t}</option>)}

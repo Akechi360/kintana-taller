@@ -80,13 +80,13 @@ export default function Tablero() {
             id="f-tecnico"
             value={tecnico}
             onChange={(e) => irReemplazar(e.target.value ? `/?tecnico=${e.target.value}` : '/')}
-            className="h-10 rounded-[9px] bg-white px-3 text-sm ring-1 ring-inset ring-zinc-300 focus:outline-none focus:ring-2 focus:ring-cobre-500"
+            className="h-10 rounded-[9px] bg-white px-3 text-sm ring-1 ring-inset ring-zinc-300 focus:outline-none focus:ring-2 focus:ring-marca-500"
           >
             <option value="">Todos los técnicos</option>
             {(data?.tecnicos || []).map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}
           </select>
           <Boton variante="secundario" tam="sm" icono={FileXlsIcon} disabled={!vista?.todas.length} onClick={() => exportarOrdenes(vista.todas)}>Excel</Boton>
-          <Enlace href="#/nueva" variante="cobre" tam="sm" icono={PlusIcon}>Recepción</Enlace>
+          <Enlace href="#/nueva" variante="marca" tam="sm" icono={PlusIcon}>Recepción</Enlace>
         </div>
       </div>
 
@@ -119,7 +119,7 @@ export default function Tablero() {
 
       {vista && vista.todas.length === 0 && (
         <Vacio icono={KanbanIcon} titulo="El tablero está vacío" texto="Cada motor que se reciba aparece en la columna Recibido y avanza solo cuando el técnico termina su etapa.">
-          <Enlace href="#/nueva" variante="cobre" icono={PlusIcon}>Registrar un motor</Enlace>
+          <Enlace href="#/nueva" variante="marca" icono={PlusIcon}>Registrar un motor</Enlace>
         </Vacio>
       )}
 

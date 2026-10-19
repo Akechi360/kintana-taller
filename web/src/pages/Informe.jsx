@@ -7,7 +7,7 @@ import {
   evaluarAislamiento, desbalance, voltajeNominal, etiquetaIP, revisarBobinado, limiteVibracion,
 } from '../lib/calc.js'
 import { totales } from '../components/Cotizacion.jsx'
-import { Boton, Cargando, ErrorCaja, Logo, cx } from '../ui.jsx'
+import { Boton, Cargando, ErrorCaja, cx } from '../ui.jsx'
 
 const TITULOS = { recepcion: 'Acta de recepción de equipo', tecnico: 'Informe técnico de servicio', cotizacion: 'Cotización' }
 const PIEZA = { bueno: 'Bueno', regular: 'Regular', malo: 'Malo', na: 'N/A', si: 'Sí', no: 'No' }
@@ -46,7 +46,7 @@ export default function Informe({ id }) {
       <article className="hoja mx-auto flex max-w-[816px] flex-col gap-6 bg-white px-10 py-10 text-[13px] leading-relaxed text-zinc-900 shadow-[0_20px_50px_-24px_rgb(24_24_27/0.35)]">
         <header className="flex items-start justify-between gap-6 border-b-2 border-zinc-900 pb-4">
           <div>
-            <Logo className="text-2xl" />
+            <img src="/logo-kintana.svg" alt="Kintana Electro-Automatización Industrial S.A.S" width={150} height={130} className="h-[104px] w-auto" />
             <p className="mt-2 text-[11px] leading-snug text-zinc-600">
               Montajes eléctricos · Mantenimiento preventivo y correctivo · Bobinado de motores<br />
               CRA 36 # 8-392, frente a Postobón, Zipaquirá · Tel. 313 234 5748 · 310 301 1976 · kintanapa@hotmail.com
@@ -248,7 +248,7 @@ function Tecnico({ orden }) {
       {(hayBobinado || p.pf_conforme) && (
         <section className="grid grid-cols-2 gap-6 avoid-break">
           <Bloque titulo="Placa de reparador (RETIE)">
-            <Fila k="Reparador" v="Kintana Electricidad Industrial" />
+            <Fila k="Reparador" v="Kintana Electro-Automatización Industrial S.A.S" />
             <Fila k="Año de reparación" v={String(new Date(String(orden.updated).replace(' ', 'T')).getFullYear())} />
             <Fila k="Modificación" v={hayBobinado ? (b.dato_original === 'no' ? 'Rebobinado con rediseño' : 'Rebobinado con datos originales') : 'Mantenimiento sin modificación del devanado'} />
           </Bloque>

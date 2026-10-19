@@ -150,7 +150,7 @@ export default function Recepcion() {
         <p className="mt-1 text-[15px] text-zinc-600">El consecutivo de la orden se asigna solo al guardar.</p>
       </div>
       {borrador && hayDatos && !creada && (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-[12px] bg-cobre-50 px-4 py-3 text-[15px] text-cobre-700 ring-1 ring-cobre-100" role="status">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-[12px] bg-marca-50 px-4 py-3 text-[15px] text-marca-700 ring-1 ring-marca-100" role="status">
           <span>Recuperamos la recepción que dejaste a medias. Las fotos hay que tomarlas de nuevo.</span>
           <Boton variante="fantasma" tam="sm" onClick={descartar}>Empezar de cero</Boton>
         </div>
@@ -184,7 +184,7 @@ export default function Recepcion() {
                 placeholder="Nombre del cliente o NIT…"
                 autoComplete="off"
                 aria-invalid={!!errores.cliente}
-                className="h-12 w-full rounded-[10px] bg-white pl-11 pr-3 text-base ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:outline-none focus:ring-2 focus:ring-cobre-500 aria-[invalid=true]:ring-mal"
+                className="h-12 w-full rounded-[10px] bg-white pl-11 pr-3 text-base ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:outline-none focus:ring-2 focus:ring-marca-500 aria-[invalid=true]:ring-mal"
               />
             </label>
             {errores.cliente && <p className="text-[13px] text-mal">{errores.cliente}</p>}
@@ -230,7 +230,7 @@ export default function Recepcion() {
                       <span className="block truncate font-medium">{motorCorto(m)}</span>
                       <span className="num block truncate text-sm text-zinc-500">{m.serial ? `Serial ${m.serial}` : 'Sin serial'}{m.voltaje ? ` · ${m.voltaje} V` : ''}</span>
                     </span>
-                    <span className="text-sm font-medium text-cobre-700">Usar</span>
+                    <span className="text-sm font-medium text-marca-700">Usar</span>
                   </button>
                 </li>
               ))}
@@ -316,7 +316,7 @@ export default function Recepcion() {
             <Boton tam="lg" cargando={ocupado} onClick={reintentar}>Reintentar</Boton>
           </div>
         ) : (
-          <Boton type="submit" variante="cobre" tam="lg" cargando={ocupado} icono={ArrowRightIcon} className="w-full">
+          <Boton type="submit" variante="marca" tam="lg" cargando={ocupado} icono={ArrowRightIcon} className="w-full">
             {enviando || 'Crear orden de trabajo'}
           </Boton>
         )}

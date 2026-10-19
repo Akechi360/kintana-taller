@@ -104,7 +104,7 @@ export default function Orden({ id }) {
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="num text-3xl font-semibold tracking-tight">OT {orden.numero}</h1>
-              <Etiqueta nivel={orden.estado === 'entregado' ? 'ok' : 'cobre'}>{ETAPA[orden.estado].nombre}</Etiqueta>
+              <Etiqueta nivel={orden.estado === 'entregado' ? 'ok' : 'marca'}>{ETAPA[orden.estado].nombre}</Etiqueta>
               {orden.prioridad === 'urgente' && <Etiqueta nivel="mal"><LightningIcon className="size-3.5" weight="fill" aria-hidden />Urgente</Etiqueta>}
             </div>
             <p className="mt-1.5 truncate text-lg font-medium text-zinc-900">{c.nombre}</p>
@@ -121,7 +121,7 @@ export default function Orden({ id }) {
       {orden.estado !== 'entregado' && (
         <div className="no-print flex flex-wrap items-center gap-2">
           {puedeAvanzar && (
-            <Boton variante="cobre" tam="lg" icono={ArrowRightIcon} onClick={() => setMover(sig)} className="flex-1 sm:flex-none">
+            <Boton variante="marca" tam="lg" icono={ArrowRightIcon} onClick={() => setMover(sig)} className="flex-1 sm:flex-none">
               {ETAPA[orden.estado].accion}
             </Boton>
           )}
@@ -181,7 +181,7 @@ export default function Orden({ id }) {
           <ErrorCaja error={errorMover} />
           <div className="grid grid-cols-2 gap-2">
             <Boton variante="secundario" tam="lg" onClick={() => setMover(null)}>Cancelar</Boton>
-            <Boton variante="cobre" tam="lg" icono={CheckIcon} cargando={moviendo} onClick={confirmarMover}>
+            <Boton variante="marca" tam="lg" icono={CheckIcon} cargando={moviendo} onClick={confirmarMover}>
               {advertencias.length ? 'Pasar igual' : 'Confirmar'}
             </Boton>
           </div>
@@ -197,7 +197,7 @@ function Pasos({ estado }) {
     <ol className="no-print grid grid-cols-8 gap-1" aria-label="Avance de la orden">
       {ESTADOS.map((e, n) => (
         <li key={e} className="flex min-w-0 flex-col gap-1.5" aria-current={n === i ? 'step' : undefined}>
-          <span className={cx('h-1.5 rounded-full', n < i ? 'bg-zinc-900' : n === i ? 'bg-cobre-500' : 'bg-zinc-300')} />
+          <span className={cx('h-1.5 rounded-full', n < i ? 'bg-zinc-900' : n === i ? 'bg-marca-500' : 'bg-zinc-300')} />
           <span className={cx('hidden truncate text-xs sm:block', n === i ? 'font-semibold text-zinc-900' : 'text-zinc-500')}>{ETAPA[e].corto}</span>
         </li>
       ))}
@@ -210,7 +210,7 @@ function MoverA({ orden, onElegir }) {
   return (
     <div className="flex items-center gap-2">
       <label className="sr-only" htmlFor="mover-a">Mover a otra etapa</label>
-      <select id="mover-a" value={v} onChange={(e) => setV(e.target.value)} className="h-11 rounded-[10px] bg-white px-3 text-[15px] ring-1 ring-inset ring-zinc-300 focus:outline-none focus:ring-2 focus:ring-cobre-500">
+      <select id="mover-a" value={v} onChange={(e) => setV(e.target.value)} className="h-11 rounded-[10px] bg-white px-3 text-[15px] ring-1 ring-inset ring-zinc-300 focus:outline-none focus:ring-2 focus:ring-marca-500">
         <option value="">Mover a…</option>
         {ESTADOS.filter((e) => e !== orden.estado && e !== 'entregado').map((e) => <option key={e} value={e}>{ETAPA[e].nombre}</option>)}
       </select>
@@ -239,7 +239,7 @@ function Reasignar({ orden, onGuardado }) {
     <div className="flex items-center gap-2 sm:ml-auto">
       <UserSwitchIcon className="size-5 text-zinc-500" aria-hidden />
       <label className="sr-only" htmlFor="reasignar">Técnico asignado</label>
-      <select id="reasignar" value={orden.tecnico || ''} disabled={guardando || !tecnicos.data} onChange={cambiar} className="h-11 rounded-[10px] bg-white px-3 text-[15px] ring-1 ring-inset ring-zinc-300 focus:outline-none focus:ring-2 focus:ring-cobre-500">
+      <select id="reasignar" value={orden.tecnico || ''} disabled={guardando || !tecnicos.data} onChange={cambiar} className="h-11 rounded-[10px] bg-white px-3 text-[15px] ring-1 ring-inset ring-zinc-300 focus:outline-none focus:ring-2 focus:ring-marca-500">
         <option value="">Sin asignar</option>
         {(tecnicos.data || []).map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
       </select>
@@ -364,7 +364,7 @@ function Entrega({ orden, onGuardado }) {
   return (
     <form onSubmit={entregar} noValidate className="flex flex-col gap-4 rounded-[16px] bg-white p-5 ring-1 ring-zinc-200">
       <div className="flex items-start gap-3">
-        <SignatureIcon className="mt-0.5 size-6 shrink-0 text-cobre-600" aria-hidden />
+        <SignatureIcon className="mt-0.5 size-6 shrink-0 text-marca-600" aria-hidden />
         <div>
           <h2 className="text-[17px] font-semibold tracking-tight">Registrar entrega al cliente</h2>
           <p className="mt-0.5 text-sm text-zinc-500">{conforme ? 'Pruebas marcadas como conformes.' : 'Ojo: las pruebas no están marcadas como conformes.'}</p>
@@ -376,7 +376,7 @@ function Entrega({ orden, onGuardado }) {
       </div>
       <Firma ref={firma} />
       <ErrorCaja error={error} />
-      <Boton type="submit" variante="cobre" tam="lg" icono={CheckIcon} cargando={enviando}>Confirmar entrega</Boton>
+      <Boton type="submit" variante="marca" tam="lg" icono={CheckIcon} cargando={enviando}>Confirmar entrega</Boton>
     </form>
   )
 }
@@ -393,7 +393,7 @@ function Historial({ orden }) {
         const dur = fin ? diasDesde(e.created) - diasDesde(fin) : diasDesde(e.created)
         return (
           <li key={e.id} className="relative flex gap-4 pb-6 pl-1 last:pb-0">
-            <span className={cx('relative z-[1] mt-1 size-3 shrink-0 rounded-full ring-4 ring-zinc-100', i === ev.length - 1 ? 'bg-cobre-500' : 'bg-zinc-900')} aria-hidden />
+            <span className={cx('relative z-[1] mt-1 size-3 shrink-0 rounded-full ring-4 ring-zinc-100', i === ev.length - 1 ? 'bg-marca-500' : 'bg-zinc-900')} aria-hidden />
             {i < ev.length - 1 && <span className="absolute left-[9px] top-4 h-full w-px bg-zinc-300" aria-hidden />}
             <div className="min-w-0 flex-1">
               <p className="font-medium">{ETAPA[e.a]?.nombre || e.a}</p>

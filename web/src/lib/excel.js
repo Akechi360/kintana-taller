@@ -62,7 +62,7 @@ export function exportarCotizacion({ cot, orden, items, subtotal, iva, total }) 
     const c = orden.expand?.cliente || {}
     const m = orden.expand?.motor || {}
     const aoa = [
-      ['KINTANA ELECTRICIDAD INDUSTRIAL'],
+      ['KINTANA ELECTRO-AUTOMATIZACIÓN INDUSTRIAL S.A.S'],
       ['CRA 36 # 8-392, Zipaquirá · Tel. 313 234 5748'],
       [],
       ['Cotización N°', cot.numero, '', 'Fecha', new Date()],

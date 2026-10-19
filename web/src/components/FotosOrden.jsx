@@ -69,7 +69,7 @@ export default function FotosOrden({ orden }) {
               onCambiar={(id, nota) => setPendientes((ps) => ps.map((f) => (f.id === id ? { ...f, nota } : f)))}
               onQuitar={(id) => setPendientes((ps) => ps.filter((f) => f.id !== id))}
             />
-            <Boton variante="cobre" tam="lg" cargando={subiendo} onClick={() => subir(pendientes)}>
+            <Boton variante="marca" tam="lg" cargando={subiendo} onClick={() => subir(pendientes)}>
               {subiendo ? 'Subiendo…' : pendientes.some((p) => p.estado === 'error') ? 'Reintentar' : `Subir ${pendientes.length} foto${pendientes.length > 1 ? 's' : ''}`}
             </Boton>
           </>

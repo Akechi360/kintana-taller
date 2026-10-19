@@ -33,7 +33,7 @@ export default function Login() {
     }
   }
 
-  const input = 'h-14 w-full rounded-[12px] bg-white px-4 text-[17px] ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:outline-none focus:ring-2 focus:ring-cobre-500'
+  const input = 'h-14 w-full rounded-[12px] bg-white px-4 text-[17px] ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:outline-none focus:ring-2 focus:ring-marca-500'
 
   return (
     <div className="grid min-h-[100dvh] lg:grid-cols-2">
@@ -69,13 +69,13 @@ export default function Login() {
             </Boton>
           </form>
         </div>
-        <p className="text-xs text-zinc-500">Kintana Electricidad Industrial · Zipaquirá, Cundinamarca</p>
+        <p className="text-xs text-zinc-500">Kintana Electro-Automatización Industrial S.A.S · Zipaquirá, Cundinamarca</p>
       </div>
 
       <div className="relative hidden overflow-hidden bg-zinc-900 lg:block">
         <div
           className="absolute inset-0 opacity-[0.09]"
-          style={{ backgroundImage: 'repeating-linear-gradient(115deg, #b4643a 0 2px, transparent 2px 22px)' }}
+          style={{ backgroundImage: 'repeating-linear-gradient(180deg, #8b5ca0 0 2px, transparent 2px 26px)' }}
           aria-hidden
         />
         <div className="relative flex h-full flex-col justify-end gap-10 p-12 text-zinc-100">

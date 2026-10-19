@@ -50,7 +50,7 @@ export default function Equipo() {
           <h1 className="text-2xl font-semibold tracking-tight">Equipo</h1>
           <p className="mt-1 text-[15px] text-zinc-600">Cada técnico entra con su usuario y solo ve las órdenes que tiene asignadas.</p>
         </div>
-        <Boton variante="cobre" icono={UserPlusIcon} onClick={() => { setErr(''); setForm({ ...vacio }) }}>Nuevo usuario</Boton>
+        <Boton variante="marca" icono={UserPlusIcon} onClick={() => { setErr(''); setForm({ ...vacio }) }}>Nuevo usuario</Boton>
       </div>
       <ErrorCaja error={error && mensajeError(error)} onReintentar={() => recargar()} />
       {cargando && !data && <Cargando />}

@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+/* Kintana: base zinc + un solo acento cobre (el material del bobinado). */
+@theme {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+
+  --color-cobre-50: #fbf3ee;
+  --color-cobre-100: #f4e2d6;
+  --color-cobre-500: #b4643a;
+  --color-cobre-600: #9c522b;
+  --color-cobre-700: #7f4224;
+
+  --color-ok: #24704f;
+  --color-ok-bg: #e8f3ec;
+  --color-alerta: #94580a;
+  --color-alerta-bg: #fbf0dc;
+  --color-mal: #a8281e;
+  --color-mal-bg: #fbe9e7;
+}
+
+@layer base {
+  html {
+    background: var(--color-zinc-100);
+    color: var(--color-zinc-900);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (pointer: fine) {
+    html { overscroll-behavior: none; }
+  }
+  body { font-family: var(--font-sans); touch-action: manipulation; }
+  /* que las barras fijas (encabezado, guardar, menu) no tapen el campo enfocado */
+  html { scroll-padding-top: 4.5rem; scroll-padding-bottom: 10rem; }
+  @media (min-width: 768px) { html { scroll-padding-top: 1.5rem; scroll-padding-bottom: 6rem; } }
+  button, a, input, select, textarea, label { touch-action: manipulation; }
+  h1, h2, h3 { text-wrap: balance; }
+  select { background-color: white; color: var(--color-zinc-900); }
+  input[type='number'] { font-family: var(--font-mono); }
+  :focus-visible { outline: 2px solid var(--color-cobre-500); outline-offset: 2px; }
+}
+
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.safe-b { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
+.safe-t { padding-top: env(safe-area-inset-top); }
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+.skeleton { position: relative; overflow: hidden; background: var(--color-zinc-200); border-radius: 6px; }
+.skeleton::after {
+  content: ''; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.55), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after { animation: none; }
+}
+
+/* Impresion de informes: solo se imprime .hoja */
+@media print {
+  @page { size: letter; margin: 12mm; }
+  html, body { background: white !important; }
+  .no-print { display: none !important; }
+  .hoja { box-shadow: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important; max-width: none !important; }
+  .avoid-break { break-inside: avoid; }
+}

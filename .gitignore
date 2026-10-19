@@ -1,0 +1,9 @@
+node_modules/
+web/dist/
+.vercel/
+server/pb_data/
+server/accesos-demo.json
+server/.env.local
+server/pocketbase.exe
+server/CHANGELOG.md
+server/LICENSE.md

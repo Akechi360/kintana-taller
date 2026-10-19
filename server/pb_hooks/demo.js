@@ -34,6 +34,9 @@ module.exports = function cargarDemo(app, reset) {
   ]
   const U = {}
   for (const [usuario, nombre, rol] of personas) {
+    // KINTANA_CLAVE_DEMO (hosting con disco efimero): misma clave estable en cada arranque.
+    const fija = $os.getenv("KINTANA_CLAVE_DEMO")
+    if (fija && fija.length >= 8) claves[usuario] = fija
     if (!claves[usuario]) claves[usuario] = $security.randomStringWithAlphabet(10, "abcdefghjkmnpqrstuvwxyz23456789")
     const u = new Record(col("users"))
     u.set("usuario", usuario)

@@ -23,6 +23,13 @@ App de órdenes de servicio, diagnóstico y bobinado de motores. Dos piezas:
 
 Si el PC de la oficina está apagado, la app en Vercel muestra "No hay conexión con el servidor del taller".
 
+## Servidor de demo en Render (gratis, mientras se instala el PC de la oficina)
+- `render.yaml` + `Dockerfile`: Render construye PocketBase con los mismos hooks y migraciones.
+- El disco gratis se borra al dormir (15 min sin uso): cada arranque recrea la base y carga la demo antes de abrir.
+- Todos los usuarios demo usan la clave de la variable `KINTANA_CLAVE_DEMO` (se define en Render).
+- Despertar tarda 30–60 s: abre la app 2 minutos antes de mostrarla. Lo creado durante la demo se pierde al dormir.
+- En Vercel, `VITE_PB_URL` = la URL de Render (ej. `https://kintana-taller.onrender.com`).
+
 ## Uso diario
 - `reiniciar-demo.bat`: deja los datos de demostración como nuevos.
 - Desarrollo: `cd web && npm install && npm run build` (compila a `server/pb_public`).

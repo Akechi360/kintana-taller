@@ -1,0 +1,8 @@
+node_modules
+web
+server/pb_data
+server/pocketbase.exe
+server/accesos-demo.json
+server/.env.local
+.git
+.claude

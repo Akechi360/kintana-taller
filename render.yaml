@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: kintana-taller
+    runtime: docker
+    plan: free
+    region: virginia
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # Clave de todos los usuarios demo (admin, wcastaneda, yrozo, ngarzon). Minimo 8 caracteres.
+      - key: KINTANA_CLAVE_DEMO
+        sync: false

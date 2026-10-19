@@ -23,10 +23,11 @@ export default function Login() {
     try {
       await pb.collection('users').authWithPassword(usuario, clave)
     } catch (err) {
+      // 400 = credenciales malas; cualquier otra cosa es que el servidor no respondio como PocketBase.
       setError(
-        err.status === 0
-          ? 'No hay conexión con el servidor del taller. Revisa los datos móviles e intenta de nuevo.'
-          : 'Usuario o contraseña incorrectos. Si no recuerdas tu clave, pídela a administración.',
+        err.status === 400
+          ? 'Usuario o contraseña incorrectos. Si no recuerdas tu clave, pídela a administración.'
+          : 'No hay conexión con el servidor del taller. Revisa los datos móviles; si sigue igual, el PC del taller puede estar apagado.',
       )
       setEnviando(false)
     }
